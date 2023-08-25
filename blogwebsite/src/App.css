@@ -1,0 +1,102 @@
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* LOGIN code Reset some default styles to ensure consistency across browsers */
+* {
+  margin: 10px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+/* Basic styling for the body */
+
+
+/* Styling for the login container */
+.login-container {
+  border-radius: 25px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+}
+
+/* Styling for the form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling for form inputs */
+.login-input {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Styling for the submit button */
+.login-button {
+  background-color: #F3A712;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #B30089;
+}
+
+/* Styling for error messages */
+.error-message {
+  color: #ff0000;
+  margin-top: 5px;
+}
+
+/* Styling for links */
+.login-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* NAVIGATION BAR */
+
+/* Styling for the navigation bar */
+.navbar {
+  background-color: #BAA5FF;
+  overflow: hidden;
+  border-radius: 25px;
+}
+
+.logo img {
+  width: 200px;
+  float: left;
+  margin: 10px 10px 35px 10px;
+  border-radius: 25px;
+}
+
+.link {
+  border-radius: 25px;
+  float: left;
+  display: block;
+  color: #1F0322;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #470063;
+  color: #F3A712;
+}
+
