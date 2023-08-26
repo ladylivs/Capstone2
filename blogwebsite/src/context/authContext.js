@@ -21,7 +21,7 @@ export const AuthContextProvider = ({children}) => {
 			withCredentials: true,
 			headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'
 		}});
-		console.log(response.data.username);
+		console.log(response.username);
 		setCurrentUser(response.data.username);
 	};
 

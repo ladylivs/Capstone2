@@ -35,7 +35,7 @@ const Home = () => {
 								</Link>
 							</h2>
 							<h3>posted:
-								{post.post_date}
+								{new Date(post.post_date).toLocaleDateString("lookup")}
 							</h3>
 							<div className="postbody">
 							{post.body}

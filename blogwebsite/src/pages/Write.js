@@ -1,6 +1,4 @@
-import React, {useState, useContext} from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../context/authContext';
@@ -12,120 +10,105 @@ import { AuthContext } from '../context/authContext';
 const apiBaseUrl = "http://localhost:8800";
 
 const Write = () => {
+
 	const [value, setValue] = useState('');
-	const [tags, setTags] = useState([]);
+
 	const [title, setTitle] = useState('')
 
-	const {currentUser} = useContext(AuthContext);
+	const { currentUser } = useContext(AuthContext);
 	const navigate = useNavigate();
 
-  const handleCreateClick = async(e) => {
-	e.preventDefault();
-	try {
-		await axios.post(`${apiBaseUrl}/posts/new`, {
-			title: title,
-			body: value,
-			username: currentUser,
-		})
-		navigate(`/blog/${currentUser}`)
-	} catch (error) {
-		
+	const handleCreateClick = async (e) => {
+		e.preventDefault();
+		console.log(currentUser)
+		try {
+			await axios.post(`${apiBaseUrl}/posts/new`, {
+				title: title,
+				body: value,
+				username: currentUser,
+			})
+			navigate(`/blog/${currentUser}`)
+		} catch (error) {
+
+		}
 	}
-  }
 
 	//add state? AHEAD
-	
+
 	return (
-		<div className='write'>	
+		<div className='write'>
 			<div className='content'>
-				<input 
-					type="text" 
-					placeholder='title' 
+				<input
+					type="text"
+					placeholder='title'
 					value={title}
-					onChange={(e) => setTitle(e.target.value)}/>
+					onChange={(e) => setTitle(e.target.value)} />
 				<div className="editContainer">
-					<ReactQuill 
-						className='editor'
-						theme="snow" 
-						value={value} 
-						onChange={setValue} />
+					<form className="writingarea">
+						<textarea placeholder='write your blog post here!' id="userText" name="userText" rows="10" cols="75" onChange={(e) => setValue(e.target.value)}></textarea>
+					</form>
+
+				</div>
+			</div>
+			<div className='menu'>
+				<div className="item">
+					<div className="buttons">
+					<button type="submit" onClick={handleCreateClick}>Create Post</button>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	)
+}
+
+export default Write;
+
+
+
+
+
+/*
+
+		<div className='write'>
+			<div className='content'>
+				<input
+					type="text"
+					placeholder='title'
+					value={title}
+					onChange={(e) => setTitle(e.target.value)} />
+				<div className="editContainer">
+					<Editor
+						apiKey="j5815szios1y40c274vjl6yde4nbm9zxeq45y35rn52wzirh"
+						onInit={(evt, editor) => editorRef.current = editor}
+						initialValue="This is the initial content of the editor."
+						init={{
+							height: 500,
+							menubar: false,
+							plugins: [
+								'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+								'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+								'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
+							],
+							toolbar: 'undo redo | blocks | ' +
+								'bold italic forecolor | alignleft aligncenter ' +
+								'alignright alignjustify | bullist numlist outdent indent | ' +
+								'removeformat | help',
+							content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+						}}
+					/>
 				</div>
 			</div>
 			<div className='menu'>
 				<div className="item">
 					<h2>Publish</h2>
-						<span>
-							<b>Status: </b> Draft
-						</span>
-						<span>
-							<b>Visibility: </b> Public
-						</span>
-						<div className="buttons">
-							 <button onClick={handleCreateClick}>Create Post</button>
-							
-						</div>
+					<div className="buttons">
+						<button onClick={handleCreateClick}>Create Post</button>
+					</div>
 				</div>
-
-
-
-
 			</div>
 
 		</div>
 	)
-} 
-
-export default Write; 
-
-
-
-/*
-tag code: const [tags, setTags] = useState([]);
-
-const handleDelete = i => {
-	setTags(tags.filter((tag, index) => index !== i));
-  };
-
-  const handleAddition = tag => {
-	setTags([...tags, tag]);
-  };
-
-  const handleDrag = (tag, currPos, newPos) => {
-	const newTags = tags.slice();
-
-	newTags.splice(currPos, 1);
-	newTags.splice(newPos, 0, tag);
-
-	// re-render
-	setTags(newTags);
-  };
-
-  const handleTagClick = index => {
-	console.log('The tag at index ' + index + ' was clicked');
-  };
-
-
-
-
-
-
-
-  				<div className="item">
-				<div className="tagging">
-      <h1> Tags: </h1>
-      <div>
-        <ReactTags
-          tags={tags}
-          handleDelete={handleDelete}
-          handleAddition={handleAddition}
-          handleDrag={handleDrag}
-          handleTagClick={handleTagClick}
-          inputFieldPosition="bottom"
-          autocomplete
-        />
-      </div>
-    </div>
-
-				</div>
-
-  */
+*/

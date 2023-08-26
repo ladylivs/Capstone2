@@ -32,10 +32,10 @@ const NavBar = () => {
 						<h6>Tags</h6>
 					</Link>
 					<Link className="link">
-					<span>{currentUser.username}</span>
+					<span className='username'>{currentUser.username}</span>
 					</Link>
 					
-					{currentUser ? <span onClick={logout}>logout</span> : <Link className="link" to="/login">Login</Link>}
+					{currentUser ? <button onClick={logout} className="logoutbutton">logout</button> : <Link className="link" to="/login">Login</Link>}
 					<span>
 						<Link to="/write" className="write">write post</Link>
 					</span>

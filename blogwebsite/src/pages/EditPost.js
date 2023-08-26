@@ -1,6 +1,4 @@
 import React, { useState, useContext } from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../context/authContext';
@@ -32,7 +30,7 @@ const EditPost = () => {
 		e.preventDefault();
 		try {
 			await axios.put(`${apiBaseUrl}/posts/${state.post_id}`, stateInputs);
-			navigate(`/blog/${currentUser}`);
+			navigate(`/`);
 		} catch (err) {
 			
 		}
@@ -47,11 +45,10 @@ const EditPost = () => {
 					value={title}
 					onChange={(e) => setTitle(e.target.value)} />
 				<div className="editContainer">
-					<ReactQuill
-						className='editor'
-						theme="snow"
-						value={value}
-						onChange={setValue} />
+
+				<form className="writingarea">
+						<textarea placeholder='write your blog post here!' id="userText" value={value} name="userText" rows="10" cols="75" onChange={(e) => setValue(e.target.value)}></textarea>
+					</form>
 				</div>
 			</div>
 			<div className='menu'>
